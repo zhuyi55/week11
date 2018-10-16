@@ -27,7 +27,6 @@ with open(FLAGS.reverse_dictionary, encoding='utf-8') as inf:
 reverse_list = [reverse_dictionary[str(i)]
                 for i in range(len(reverse_dictionary))]
 titles = ['江神子', '蝶恋花', '渔家傲']
-print (titles[0][0])
 
 
 model = Model(learning_rate=FLAGS.learning_rate, batch_size=1, num_steps=1)
