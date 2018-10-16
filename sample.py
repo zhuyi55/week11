@@ -63,19 +63,19 @@ with tf.Session() as sess:
                 [model.predictions, model.outputs_state_tensor], feed_dict=feed_dict)
 
         sentence = title
-        word_index = pred[0].argsort()[-1]
-
+        word_index = pred[0].argsort()[-1][-1]
+        
         # generate sample
         for i in range(64):
-            feed_dict = {model.X: [[word_index[0]]],
+            feed_dict = {model.X: [[word_index]],
                          model.state_tensor: state,
                          model.keep_prob: 1.0}
 
             pred, state = sess.run(
                 [model.predictions, model.outputs_state_tensor], feed_dict=feed_dict)
 
-            word_index = pred[0].argsort()[-1]
-            word = np.take(reverse_list, word_index[0])
+            word_index = pred[0].argsort()[-1][-1]
+            word = np.take(reverse_list, word_index)
             ##print (word)
             ##print (sentence)
             sentence = sentence + word
